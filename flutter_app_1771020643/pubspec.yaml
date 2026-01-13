@@ -1,0 +1,29 @@
+name: flutter_app_1771020643
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Các icon mặc định
+  cupertino_icons: ^1.0.2
+
+  # --- CÁC THƯ VIỆN FIREBASE (ĐÃ THÊM AUTH) ---
+  firebase_core: ^3.10.1
+  cloud_firestore: ^5.6.0
+  firebase_auth: ^5.4.4     # <--- DÒNG NÀY ĐỂ SỬA LỖI ĐĂNG NHẬP
+  shared_preferences: ^2.3.2
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
