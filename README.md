@@ -19,8 +19,6 @@
 - [📁 Cấu trúc dự án](#-cấu-trúc-dự-án)
 - [🔧 Scripts hữu ích](#-scripts-hữu-ích)
 - [📊 Database Schema](#-database-schema)
-- [🔒 Security](#-security)
-- [⚡ Performance](#-performance)
 - [🔧 Troubleshooting](#-troubleshooting)
 - [👨‍💻 Tác giả](#-tác-giả)
 
