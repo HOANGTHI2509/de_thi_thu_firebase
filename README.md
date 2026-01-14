@@ -109,7 +109,7 @@
 
 ### 1. Clone repository
 ```bash
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/HOANGTHI2509/de_thi_thu_firebase.git)
 cd flutter_app_1771020643
 ```
 
