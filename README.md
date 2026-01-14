@@ -2,7 +2,7 @@
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.2.3+-02569B?logo=flutter)](https://flutter.dev/)
 [![Firebase](https://img.shields.io/badge/Firebase-9.0.0+-FFCA28?logo=firebase)](https://firebase.google.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 > Ứng dụng quản lý nhà hàng hiện đại với trải nghiệm người dùng tuyệt vời
 
