@@ -23,7 +23,6 @@
 - [⚡ Performance](#-performance)
 - [🔧 Troubleshooting](#-troubleshooting)
 - [👨‍💻 Tác giả](#-tác-giả)
-- [🙏 Acknowledgments](#-acknowledgments)
 
 ## 📋 Mô tả dự án
 
@@ -381,12 +380,6 @@ Future<List<ReservationModel>> getCustomerReservations(String customerId)
 - **Tên**: Hoàng Văn Thi
 - **Mã sinh viên**: 1771020643
 
-## 🙏 Acknowledgments
-
-- **Flutter Team** - Framework tuyệt vời
-- **Firebase Team** - Backend services
-- **Material Design** - UI guidelines
-- **Open Source Community** - Packages và libraries
 
 ### Packages sử dụng:
 - [firebase_core](https://pub.dev/packages/firebase_core)
@@ -401,11 +394,3 @@ Future<List<ReservationModel>> getCustomerReservations(String customerId)
 
 ⭐ **Nếu bạn thích dự án này, hãy cho chúng tôi một ngôi sao trên GitHub!**
 
-
-
-### 📊 Project Stats
-![GitHub stars](https://img.shields.io/github/stars/yourusername/restaurant-app?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/restaurant-app?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/yourusername/restaurant-app?style=social)
-
-*Được phát triển như một phần của dự án Flutter cho môn học Phát triển Ứng dụng Di động*
