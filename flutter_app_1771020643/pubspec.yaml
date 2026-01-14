@@ -1,5 +1,5 @@
 name: flutter_app_1771020643
-description: "A new Flutter project."
+description: "Restaurant Management App - 1771020643"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,15 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Các icon mặc định
+  # Core Packages - TỐI THIỂU CẦN THIẾT
   cupertino_icons: ^1.0.2
-
-  # --- CÁC THƯ VIỆN FIREBASE (ĐÃ THÊM AUTH) ---
   firebase_core: ^3.10.1
+  firebase_auth: ^5.3.1
   cloud_firestore: ^5.6.0
-  firebase_auth: ^5.4.4     # <--- DÒNG NÀY ĐỂ SỬA LỖI ĐĂNG NHẬP
   shared_preferences: ^2.3.2
   intl: ^0.19.0
+  provider: ^6.1.1
+  uuid: ^4.4.0
+  email_validator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

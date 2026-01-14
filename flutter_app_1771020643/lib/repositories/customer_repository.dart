@@ -1,47 +1,97 @@
+// lib/repositories/customer_repository.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/customer.dart';
-import '../services/database_service.dart';
+import '../models/customer_model.dart';
 
 class CustomerRepository {
-  // Lấy tham chiếu collection từ DatabaseService đã thiết lập ở Phần 1
-  final CollectionReference _custCollection = DatabaseService().customersRef;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // 1. Thêm Customer (3 điểm)
-  Future<void> addCustomer(Customer customer) async {
-    await _custCollection.doc(customer.customerId).set(customer.toMap());
-  }
-
-  // 2. Lấy Customer theo ID (2 điểm)
-  Future<Customer?> getCustomerById(String id) async {
-    DocumentSnapshot doc = await _custCollection.doc(id).get();
-    if (doc.exists) {
-      return Customer.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+  // 1. Thêm Customer
+  Future<void> addCustomer(CustomerModel customer) async {
+    try {
+      await _firestore
+          .collection('customers')
+          .doc(customer.customerId)
+          .set(customer.toJson());
+    } catch (e) {
+      throw Exception('Lỗi thêm khách hàng: $e');
     }
-    return null;
   }
 
-  // 3. Lấy tất cả Customers (2 điểm)
-  Stream<List<Customer>> getAllCustomers() {
-    return _custCollection
-        .orderBy('createdAt', descending: true)
-        .snapshots()
-        .map((snapshot) {
-      return snapshot.docs.map((doc) {
-        return Customer.fromMap(doc.data() as Map<String, dynamic>, doc.id);
-      }).toList();
-    });
+  // 2. Lấy Customer theo ID
+  Future<CustomerModel?> getCustomerById(String customerId) async {
+    try {
+      final doc =
+          await _firestore.collection('customers').doc(customerId).get();
+      if (doc.exists) {
+        return CustomerModel.fromJson(doc.data()!);
+      }
+      return null;
+    } catch (e) {
+      throw Exception('Lỗi lấy khách hàng: $e');
+    }
   }
 
-  // 4. Cập nhật thông tin Customer (3 điểm)
-  Future<void> updateCustomer(String id, Map<String, dynamic> data) async {
-    await _custCollection.doc(id).update(data);
+  // 3. Lấy tất cả Customers
+  Future<List<CustomerModel>> getAllCustomers() async {
+    try {
+      final snapshot = await _firestore.collection('customers').get();
+      return snapshot.docs
+          .map((doc) => CustomerModel.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      throw Exception('Lỗi lấy danh sách khách hàng: $e');
+    }
   }
 
-  // 5. Cập nhật Loyalty Points (2 điểm)
-  // Sử dụng FieldValue.increment để cộng dồn điểm trực tiếp trên Server
+  // 4. Cập nhật Customer
+  Future<void> updateCustomer(CustomerModel customer) async {
+    try {
+      await _firestore
+          .collection('customers')
+          .doc(customer.customerId)
+          .update(customer.toJson());
+    } catch (e) {
+      throw Exception('Lỗi cập nhật khách hàng: $e');
+    }
+  }
+
+  // 5. Cập nhật Loyalty Points - CHUẨN ĐỀ
   Future<void> updateLoyaltyPoints(String customerId, int points) async {
-    await _custCollection.doc(customerId).update({
-      'loyaltyPoints': FieldValue.increment(points),
-    });
+    try {
+      await _firestore.collection('customers').doc(customerId).update({
+        'loyaltyPoints': FieldValue.increment(points),
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      throw Exception('Lỗi cập nhật điểm tích lũy: $e');
+    }
+  }
+
+  // 6. Lấy Customer theo email (cho đăng nhập)
+  Future<CustomerModel?> getCustomerByEmail(String email) async {
+    try {
+      final query = await _firestore
+          .collection('customers')
+          .where('email', isEqualTo: email)
+          .limit(1)
+          .get();
+
+      if (query.docs.isNotEmpty) {
+        return CustomerModel.fromJson(query.docs.first.data());
+      }
+      return null;
+    } catch (e) {
+      throw Exception('Lỗi tìm khách hàng theo email: $e');
+    }
+  }
+
+  // 7. Stream tất cả Customers (real-time)
+  Stream<List<CustomerModel>> getAllCustomersStream() {
+    return _firestore
+        .collection('customers')
+        .snapshots()
+        .map((snapshot) => snapshot.docs
+            .map((doc) => CustomerModel.fromJson(doc.data()))
+            .toList());
   }
 }
