@@ -3,8 +3,6 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.2.3+-02569B?logo=flutter)](https://flutter.dev/)
 [![Firebase](https://img.shields.io/badge/Firebase-9.0.0+-FFCA28?logo=firebase)](https://firebase.google.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/restaurant-app/ci.yml)](https://github.com/yourusername/restaurant-app/actions)
-[![codecov](https://codecov.io/gh/yourusername/restaurant-app/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/restaurant-app)
 
 > Ứng dụng quản lý nhà hàng hiện đại với trải nghiệm người dùng tuyệt vời
 
@@ -20,8 +18,6 @@
 - [🚀 Cài đặt và chạy](#-cài-đặt-và-chạy)
 - [📁 Cấu trúc dự án](#-cấu-trúc-dự-án)
 - [🔧 Scripts hữu ích](#-scripts-hữu-ích)
-- [🧪 Testing](#-testing)
-- [🚀 Deployment](#-deployment)
 - [📊 Database Schema](#-database-schema)
 - [🔒 Security](#-security)
 - [⚡ Performance](#-performance)
@@ -191,50 +187,6 @@ flutter pub upgrade
 flutter pub outdated
 ```
 
-## 🧪 Testing
-
-### Chạy unit tests
-```bash
-flutter test
-```
-
-### Chạy integration tests
-```bash
-flutter test integration_test/
-```
-
-### Chạy tests với coverage
-```bash
-flutter test --coverage
-```
-
-### Test trên thiết bị thật
-```bash
-flutter test --device-id=<device_id>
-```
-
-## 🚀 Deployment
-
-### Android APK
-```bash
-flutter build apk --release
-# File APK sẽ được tạo tại: build/app/outputs/flutter-apk/app-release.apk
-```
-
-### Android App Bundle (AAB)
-```bash
-flutter build appbundle --release
-# File AAB sẽ được tạo tại: build/app/outputs/bundle/release/app-release.aab
-```
-
-### iOS (chỉ trên macOS)
-```bash
-flutter build ios --release
-```
-
-### Web
-```bash
-flutter build web --release
 ```
 
 ### Cấu hình Firebase cho production
